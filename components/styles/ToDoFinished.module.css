@@ -1,0 +1,35 @@
+.sectionTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  border-radius: 6px;
+  outline: 2px solid #f42;
+  background-color: #d87;
+}
+.articleTask {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 5px 15px;
+  z-index: 100;
+  border-bottom: 1px solid #c43;
+}
+.nameTask {
+  text-decoration: line-through #f42a 3px;
+  margin-bottom: 5px;
+}
+.btnShowDescriptionTask {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+.iconShowDescription {
+  font-size: 23px;
+}

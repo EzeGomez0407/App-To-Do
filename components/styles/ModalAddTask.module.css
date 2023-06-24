@@ -1,0 +1,111 @@
+.containModal {
+  top: 0;
+  right: 0;
+  position: absolute;
+  z-index: 200;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(53, 73, 77, 0.521);
+  backdrop-filter: blur(1.5px);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  width: 85vw;
+  min-height: 230px;
+  max-height: 70vh;
+  background: rgba(108, 150, 158, 0.521);
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.buttonCloseModal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 28px;
+  cursor: pointer;
+}
+.formAddTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.labelFormAddTask {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 10px;
+}
+.labelFormAddTask p {
+  font-size: 18px;
+  font-weight: 700;
+}
+.inputNameTask,
+.inputDescriptionTask {
+  width: 100%;
+}
+
+.inputNameTask {
+  padding: 6px 8px;
+  font-size: 16px;
+  outline: none;
+}
+.inputDescriptionTask {
+  height: 60px;
+  max-height: 200px;
+  max-width: 100%;
+  padding: 6px 8px;
+  font-size: 16px;
+  outline: none;
+}
+.timeLimitOfTask {
+  margin: 0 30px;
+}
+.divButtonTaskLimit {
+  display: flex;
+  align-items: center;
+}
+.buttonTaskTimeLimit {
+  position: relative;
+  margin: 0 20px;
+  padding: 0;
+  width: 46px;
+  height: 20px;
+  border: 1px solid #7a7a7a;
+  border-radius: 50px;
+}
+.circleSlideTaskTimeLimit {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-1px, -50%);
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #c6a6a6;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.buttonAddedTask {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  color: #ffffff;
+  background-color: #56a656;
+  cursor: pointer;
+}

@@ -1,0 +1,41 @@
+.containLayout {
+  min-height: 100vh;
+}
+.containNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #002;
+  padding: 10px;
+}
+.buttonMenu {
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.iconMenu {
+  font-size: 32px;
+}
+.containSlideOptions {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ddd;
+}
+.btnSlideOptions {
+  outline: none;
+  border: none;
+  padding: 8px 4px;
+  width: 120px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #777;
+}
+.simbolToDo {
+  padding: 0 10px;
+}

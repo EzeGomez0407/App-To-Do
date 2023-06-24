@@ -1,0 +1,48 @@
+.articleTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.divContainName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #777777;
+  border-radius: 5px;
+}
+.divContainDescription {
+  margin: 0 6px;
+  padding: 10px;
+  border-left: 1px dotted #939393;
+  border-right: 1px dotted #939393;
+  border-bottom: 1px dotted #939393;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.divContainButtons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.btntaskFinished {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 21px;
+  margin: 0 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.btnDeleteTask {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 23px;
+  margin: 0 5px;
+  color: #e84a4a;
+  transform: translateY(1.4px);
+  cursor: pointer;
+}
