@@ -3,6 +3,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 // import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BsFillPatchPlusFill } from "react-icons/bs";
+import { FiLogIn } from "react-icons/fi";
 
 import styles from "../page.module.css";
 import Layout from "../components/Layout";
@@ -22,7 +23,6 @@ export default function Home() {
   };
 
   useEffect(() => {}, [tasksFinished]);
-  console.log(tasksFinished);
 
   return (
     <Layout>
@@ -30,11 +30,14 @@ export default function Home() {
         <main className={styles.main}>
           <p>Cargando...</p>
         </main>
-      ) : !user ? (
-        <main className={styles.main}>
-          <h2>Necesitas iniciar sesión para continuar en el sitio</h2>
-          <Link href="/api/auth/login">
-            <span>Login</span>
+      ) : user ? (
+        <main className={styles.mainWithoutLogin}>
+          <h2 className={styles.needLoginText}>
+            Necesitas iniciar sesión para continuar en el sitio
+          </h2>
+          <Link href="/api/auth/login" className={styles.linkLogin}>
+            <span className={styles.spanBtnLogin}>Iniciar Sesión</span>
+            <FiLogIn />
           </Link>
         </main>
       ) : (
@@ -44,7 +47,7 @@ export default function Home() {
             <BsFillPatchPlusFill />
           </button>
           {showAddTask && <ModalAddTask setHideOrShow={openModalAddTask} />}
-          {tasksFinished.length > 0 && <ShowToDoFiniShed />}
+          {tasksFinished[0] && <ShowToDoFiniShed />}
         </main>
       )}
     </Layout>

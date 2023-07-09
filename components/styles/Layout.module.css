@@ -2,11 +2,14 @@
   min-height: 100vh;
 }
 .containNav {
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #002;
   padding: 10px;
+  z-index: 3000;
 }
 .buttonMenu {
   color: #fff;
@@ -26,6 +29,8 @@
   align-items: center;
   background-color: #ddd;
 }
+.btnLogout {
+}
 .btnSlideOptions {
   outline: none;
   border: none;
@@ -37,5 +42,33 @@
   border-bottom: 1px solid #777;
 }
 .simbolToDo {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
   padding: 0 10px;
+}
+.iconTodo {
+  color: #fff;
+  font-size: 21px;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 900px) {
+  .containNav {
+    min-height: 16px;
+    padding: 0 10px;
+  }
+  .btnLogout {
+    padding: 16px 5px;
+    text-decoration: none;
+    color: #aaa;
+    border-bottom: 3px solid #aaa;
+  }
+  .btnLogout:hover {
+    color: #fff;
+    border-bottom: 3px solid #fff;
+  }
+  .simbolToDo {
+    padding: 16px 10px;
+  }
 }

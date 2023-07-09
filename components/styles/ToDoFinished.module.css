@@ -6,7 +6,9 @@
   border-radius: 6px;
   outline: 2px solid #f42;
   background-color: #d87;
+  margin-bottom: 20px;
 }
+
 .articleTask {
   position: relative;
   display: flex;
@@ -17,10 +19,12 @@
   z-index: 100;
   border-bottom: 1px solid #c43;
 }
+
 .nameTask {
   text-decoration: line-through #f42a 3px;
   margin-bottom: 5px;
 }
+
 .btnShowDescriptionTask {
   position: absolute;
   top: 0px;
@@ -30,6 +34,12 @@
   color: #ffffff;
   cursor: pointer;
 }
+
 .iconShowDescription {
   font-size: 23px;
+}
+@media (min-width: 900px) {
+  .sectionTask {
+    width: 40%;
+  }
 }

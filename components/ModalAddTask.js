@@ -19,6 +19,7 @@ export default function ModalAddTask({ setHideOrShow }) {
     e.preventDefault();
     !activateTime ? setActivateTime(true) : setActivateTime(false);
   };
+
   const handlerOnClickAddTask = (e) => {
     e.preventDefault();
     dispatch({ type: types.ADD_TASK, payload: newTask });
@@ -43,7 +44,6 @@ export default function ModalAddTask({ setHideOrShow }) {
         circleSlideElement.style.transform = "translate(-1px, -50%)";
       }
     }
-    console.log(newTask);
   }, [activateTime, newTask]);
 
   return (

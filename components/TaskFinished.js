@@ -17,11 +17,13 @@ export default function TaskFinished({ name, description }) {
         className={style.btnShowDescriptionTask}
         onClick={handlerShowDescription}
       >
-        {!showDescription ? (
-          <IoIosArrowDown className={style.iconShowDescription} />
-        ) : (
-          <IoIosArrowUp className={style.iconShowDescription} />
-        )}
+        {!showDescription
+          ? description && (
+              <IoIosArrowDown className={style.iconShowDescription} />
+            )
+          : description && (
+              <IoIosArrowUp className={style.iconShowDescription} />
+            )}
       </button>
       {showDescription && (
         <div className={style.containDescription}>

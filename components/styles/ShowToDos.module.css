@@ -1,0 +1,11 @@
+.sectionShowToDos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+.emptyTaskArray {
+  padding: 8px;
+  color: #ddd;
+}

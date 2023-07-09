@@ -36,6 +36,7 @@ const reducer = (state, action) => {
       };
 
     case types.FINISHED_TASK:
+      // console.log("finalizado");
       return {
         ...state,
         tasksArray: state.tasksArray.filter(

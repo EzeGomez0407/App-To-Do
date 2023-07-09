@@ -1,8 +1,10 @@
 import style from "./styles/Layout.module.css";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { useEffect, useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
+import { FcTodoList } from "react-icons/fc";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,11 +12,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const { user } = useUser();
   const [showSlideMenu, setShowSlideMenu] = useState(false);
+  const [displayWidth, setDisplayWidth] = useState(null);
 
   const showOrHideSlideMenuOnClick = () => {
     !showSlideMenu ? setShowSlideMenu(true) : setShowSlideMenu(false);
   };
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setDisplayWidth(window.innerWidth);
+    }
+  }, []);
   return (
     <div className={style.containLayout}>
       <Head>
@@ -23,12 +33,20 @@ export default function RootLayout({ children }) {
         <title>BT Transfer</title>
       </Head>
       <nav className={style.containNav}>
-        <button
-          className={style.buttonMenu}
-          onClick={showOrHideSlideMenuOnClick}
-        >
-          <CiMenuKebab className={style.iconMenu} />
-        </button>
+        {user && displayWidth < 900 ? (
+          <button
+            className={style.buttonMenu}
+            onClick={showOrHideSlideMenuOnClick}
+          >
+            <CiMenuKebab className={style.iconMenu} />
+          </button>
+        ) : (
+          user && (
+            <Link className={style.btnLogout} href="api/auth/logout">
+              Cerrar Sesion
+            </Link>
+          )
+        )}
         {showSlideMenu && (
           <div id="slide-options" className={style.containSlideOptions}>
             <Link className={style.btnSlideOptions} href="api/auth/logout">
@@ -36,7 +54,10 @@ export default function RootLayout({ children }) {
             </Link>
           </div>
         )}
-        <span className={style.simbolToDo}>ToDo</span>
+        <span className={style.simbolToDo}>
+          <FcTodoList className={style.iconTodo} />
+          ToDo
+        </span>
       </nav>
       {children}
     </div>
