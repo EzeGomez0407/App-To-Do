@@ -6,8 +6,8 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background: rgba(53, 73, 77, 0.521);
-  backdrop-filter: blur(1.5px);
+  background: rgba(53, 73, 77, 0.158);
+  backdrop-filter: blur(2.5px);
 }
 .modal {
   position: absolute;
@@ -22,7 +22,7 @@
   width: 85vw;
   min-height: 230px;
   max-height: 70vh;
-  background: rgba(108, 150, 158, 0.521);
+  background: rgba(0, 0, 0, 0.671);
   backdrop-filter: blur(4px);
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -54,6 +54,7 @@
   font-size: 18px;
   font-weight: 700;
 }
+
 .inputNameTask,
 .inputDescriptionTask {
   width: 100%;
@@ -72,21 +73,75 @@
   font-size: 16px;
   outline: none;
 }
-.timeLimitOfTask {
-  margin: 0 30px;
-}
-.divButtonTaskLimit {
+.divTitleAndClickTimeLimit {
+  width: 100%;
   display: flex;
   align-items: center;
+  margin: 10px 0;
+}
+.divTitleAndClickTimeLimit p {
+  font-size: 18px;
+  font-weight: 700;
+}
+.divToLimitTask {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.divInputsToTimeLimit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  margin-bottom: 20px;
+}
+.divInputsToTimeLimit label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+}
+.timeLimitOfTask {
+  text-align: center;
+  width: 70px;
+  height: 24px;
+  padding: 12px;
+  border: 1px solid #5a5a5a;
+  border-radius: 5px;
+  transition: all, 220ms;
+}
+
+.timeLimitOfTask:focus {
+  outline: none;
+  background: none;
+  border: 1px solid #a5a5a52a;
+  border-radius: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+.infoTimeLimit {
+  position: absolute;
+  text-align: left;
+  top: 0px;
+  right: -130px;
+  width: 55%;
+  font-size: 13px;
+  color: #3baffc;
 }
 .buttonTaskTimeLimit {
-  position: relative;
+  background: none;
   margin: 0 20px;
   padding: 0;
   width: 46px;
   height: 20px;
   border: 1px solid #7a7a7a;
   border-radius: 50px;
+  transform: translateX(30px);
 }
 .circleSlideTaskTimeLimit {
   cursor: pointer;
@@ -97,17 +152,24 @@
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background-color: #c6a6a6;
-  transition: transform 0.3s, background-color 0.3s;
+  background-color: #74778a;
+  transition: transform 0.3s;
 }
 
 .buttonAddedTask {
   padding: 5px 10px;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid #66a;
   color: #ffffff;
-  background-color: #56a656;
+  background-color: #3f51b5;
   cursor: pointer;
+}
+
+.pError {
+  visibility: hidden;
+  font-size: 14px;
+  color: #fa424a;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 900px) {
@@ -119,5 +181,14 @@
   .inputDescriptionTask {
     height: 90px;
     max-height: 200px;
+  }
+  .divInputsToTimeLimit {
+    width: 250px;
+  }
+  .infoTimeLimit {
+    top: 10px;
+    right: -170px;
+    font-size: 14px;
+    width: 150px;
   }
 }

@@ -8,9 +8,9 @@ export default function ToDoFiniShed() {
   const { tasksFinished } = useStore();
   return (
     <section className={style.sectionTask}>
-      {tasksFinished.reverse().map((task, index) => (
+      {tasksFinished.map((task) => (
         <TaskFinished
-          key={index}
+          key={task.id}
           name={task.name}
           description={task.description}
         />

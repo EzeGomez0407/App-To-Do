@@ -7,9 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #002;
   padding: 10px;
   z-index: 3000;
+  transition: background-color 0.2s;
 }
 .buttonMenu {
   color: #fff;
@@ -29,8 +29,6 @@
   align-items: center;
   background-color: #ddd;
 }
-.btnLogout {
-}
 .btnSlideOptions {
   outline: none;
   border: none;
@@ -45,18 +43,22 @@
   display: flex;
   align-items: center;
   color: #ffffff;
-  padding: 0 10px;
+  /* padding: 0 10px; */
+  font-size: 21px;
 }
 .iconTodo {
   color: #fff;
-  font-size: 21px;
   margin-bottom: 2px;
+  font-size: 26px;
 }
 
 @media (min-width: 900px) {
+  .containLayout {
+    margin: 0 auto;
+  }
   .containNav {
     min-height: 16px;
-    padding: 0 10px;
+    padding: 0 20%;
   }
   .btnLogout {
     padding: 16px 5px;
@@ -69,6 +71,6 @@
     border-bottom: 3px solid #fff;
   }
   .simbolToDo {
-    padding: 16px 10px;
+    padding: 16px 0px;
   }
 }

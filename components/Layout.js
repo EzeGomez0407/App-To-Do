@@ -5,6 +5,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
 import { FcTodoList } from "react-icons/fc";
+import { handleScrollforStyleNavBar } from "@/controllers/stylesChanges";
 
 export const metadata = {
   title: "Create Next App",
@@ -21,6 +22,19 @@ export default function RootLayout({ children }) {
   };
 
   useEffect(() => {
+    const navBar = document.getElementById("navBar");
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      handleScrollforStyleNavBar(navBar, scrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     if (typeof window !== undefined) {
       setDisplayWidth(window.innerWidth);
     }
@@ -30,9 +44,9 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="xd" />
-        <title>BT Transfer</title>
+        <title>To Do App</title>
       </Head>
-      <nav className={style.containNav}>
+      <nav className={style.containNav} id="navBar">
         {user && displayWidth < 900 ? (
           <button
             className={style.buttonMenu}
