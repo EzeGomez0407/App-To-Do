@@ -32,6 +32,11 @@ cd App-To-Do
 
 npm install
 
+<br>
+4 - Ejecuta el siguiente comando para poder ejecutar la aplicación en producción.
+
+npm run build
+
 <hr>
 <h3>Uso</h3>
 Una vez que hayas clonado el proyecto y hayas instalado las dependencias, puedes ejecutar la aplicación con el siguiente comando:
