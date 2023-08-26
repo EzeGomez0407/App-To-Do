@@ -51,6 +51,16 @@
   margin-bottom: 2px;
   font-size: 26px;
 }
+.btnLogout {
+  padding: 5px 1px;
+  text-decoration: none;
+  color: #aaa;
+  border-bottom: 3px solid #aaa;
+}
+.btnLogout:hover {
+  color: #fff;
+  border-bottom: 3px solid #fff;
+}
 
 @media (min-width: 900px) {
   .containLayout {
@@ -62,13 +72,6 @@
   }
   .btnLogout {
     padding: 16px 5px;
-    text-decoration: none;
-    color: #aaa;
-    border-bottom: 3px solid #aaa;
-  }
-  .btnLogout:hover {
-    color: #fff;
-    border-bottom: 3px solid #fff;
   }
   .simbolToDo {
     padding: 16px 0px;

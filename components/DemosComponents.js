@@ -13,7 +13,11 @@ function DemoAddToDo() {
         Puedes agregar una tarea a tu lista siguiendo unos simples pasos, así
         tendrás un día más organizado y no olvidarás tus quehaceres
       </p>
-      <Image src={limitTask} className={style.imgAddToDo} />
+      <Image
+        src={limitTask}
+        className={style.imgAddToDo}
+        alt="Demo de tarea sin limite de tiempo"
+      />
     </div>
   );
 }
@@ -28,7 +32,11 @@ function DemoAddToDoLimit() {
         Añade tareas a tu lista con límites de tiempo precisos. Recibirás una
         notificación cuando el tiempo esté llegando a su fin.
       </p>
-      <Image src={taskNoLimit} className={style.imgAddToDo} />
+      <Image
+        src={taskNoLimit}
+        className={style.imgAddToDo}
+        alt="Demo de tarea con limite de tiempo"
+      />
     </div>
   );
 }
