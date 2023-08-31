@@ -23,9 +23,9 @@ export default function ModalAddTask({ setHideOrShow }) {
   const handlerOnClickAddTask = (e) => {
     e.preventDefault();
 
-    const pError = document.getElementById("p-error");
+    const pErrorEmptyName = document.getElementById("p-error-empty-name");
     if (newTask.name.trimStart() === "") {
-      pError.style.visibility = "visible";
+      pErrorEmptyName.style.visibility = "visible";
       return;
     }
 
@@ -37,9 +37,23 @@ export default function ModalAddTask({ setHideOrShow }) {
         newTask.timeLimit.hoursLimit < 1 &&
         newTask.timeLimit.minutesLimit < 1
           ? null
-          : newTask.timeLimit,
+          : {
+              hoursLimit:
+                newTask.timeLimit.hoursLimit > 0
+                  ? newTask.timeLimit.hoursLimit
+                  : 0,
+              minutesLimit:
+                newTask.timeLimit.minutesLimit > 0
+                  ? newTask.timeLimit.minutesLimit
+                  : 0,
+              seconds:
+                newTask.timeLimit.seconds > 0 ? newTask.timeLimit.seconds : 0,
+            },
       id: newTask.id,
     };
+    if (task.timeLimit?.hoursLimit < 1 && task.timeLimit?.minutesLimit < 1) {
+      task.timeLimit = null;
+    }
     dispatch({ type: types.ADD_TASK, payload: task });
     setHideOrShow();
   };
@@ -147,7 +161,7 @@ export default function ModalAddTask({ setHideOrShow }) {
               </span>
             </div>
           </label>
-          <p className={style.pError} id="p-error">
+          <p className={style.pError} id="p-error-empty-name">
             El campo nombre es obligatorio
           </p>
           <button
