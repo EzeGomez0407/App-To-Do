@@ -57,7 +57,9 @@
   transform: translateY(1.4px);
   cursor: pointer;
 }
-
+.description {
+  overflow: auto;
+}
 @media (min-width: 900px) {
   .articleTask {
     width: 50%;

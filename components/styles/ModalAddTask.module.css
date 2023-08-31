@@ -67,7 +67,7 @@
 }
 .inputDescriptionTask {
   height: 60px;
-  max-height: 200px;
+  max-height: 130px;
   max-width: 100%;
   padding: 6px 8px;
   font-size: 16px;
@@ -180,7 +180,7 @@
   }
   .inputDescriptionTask {
     height: 90px;
-    max-height: 200px;
+    max-height: 170px;
   }
   .divInputsToTimeLimit {
     width: 250px;
