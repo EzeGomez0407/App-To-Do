@@ -19,7 +19,7 @@ export default function Home() {
           </span>
           <Loading />
         </main>
-      ) : user ? (
+      ) : !user ? (
         <HomeWithoutLogin />
       ) : (
         <HomeLogin />
