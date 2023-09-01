@@ -21,7 +21,6 @@
   padding: 30px 20px;
   width: 85vw;
   min-height: 230px;
-  max-height: 70vh;
   background: rgba(0, 0, 0, 0.671);
   backdrop-filter: blur(4px);
   border-radius: 5px;
@@ -176,7 +175,6 @@
   .modal {
     width: 55vw;
     min-height: 430px;
-    max-height: 70vh;
   }
   .inputDescriptionTask {
     height: 90px;
