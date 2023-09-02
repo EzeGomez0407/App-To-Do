@@ -5,6 +5,7 @@ const initialState = {
 
 const types = {
   ADD_TASK: "ADD_TASK",
+  ADD_LIST_TASK: "ADD_LIST_TASK",
   FINISHED_TASK: "FINISHED_TASK",
   DELETE_TASK: "DELETE_TASK",
 };
@@ -18,6 +19,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         tasksArray: [...state.tasksArray, action.payload],
+      };
+
+    case types.ADD_LIST_TASK:
+      return {
+        ...state,
+        tasksArray: action.payload,
       };
 
     case types.FINISHED_TASK:
