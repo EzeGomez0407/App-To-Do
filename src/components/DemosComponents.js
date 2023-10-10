@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import style from "./styles/DemosComponents.module.css";
 
-import taskNoLimit from "../public/taskNoLimit.gif";
-import limitTask from "../public/limitTask.gif";
+import taskNoLimit from "../../public/taskNoLimit.gif";
+import limitTask from "../../public/limitTask.gif";
 
 function DemoAddToDo() {
   return (
@@ -15,6 +15,7 @@ function DemoAddToDo() {
       </p>
       <Image
         src={limitTask}
+        priority
         className={style.imgAddToDo}
         alt="Demo de tarea sin limite de tiempo"
       />
@@ -34,6 +35,7 @@ function DemoAddToDoLimit() {
       </p>
       <Image
         src={taskNoLimit}
+        priority
         className={style.imgAddToDo}
         alt="Demo de tarea con limite de tiempo"
       />

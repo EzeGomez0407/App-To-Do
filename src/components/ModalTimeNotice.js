@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import style from "./styles/TimeNotice.module.css";
-import { useDispatch } from "@/store/StoreProvider";
-import { types } from "@/store/StoreReducer";
+import { useDispatch } from "../store/StoreProvider";
+import { types } from "../store/StoreReducer";
 
 export default function TimeNotified({ task, handlerShow }) {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function TimeNotified({ task, handlerShow }) {
     soundAlert.play();
 
     return () => {
-      soundAlert.pause();
+      // soundAlert.pause();
       soundAlert.currentTime = 0;
     };
   }, []);

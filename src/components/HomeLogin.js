@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { useStore } from "@/store/StoreProvider";
+import { useStore } from "../store/StoreProvider";
 import { BsFillPatchPlusFill } from "react-icons/bs";
 
 import ShowToDos from "../components/ShowToDos";
 import ModalAddTask from "../components/ModalAddTask";
-import ShowToDoFiniShed from "@/components/ShowToDoFiniShed";
+import ShowToDoFiniShed from "./ShowToDoFiniShed";
 import styles from "./styles/HomeLogin.module.css";
 
 export default function HomeLogin() {

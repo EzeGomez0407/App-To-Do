@@ -2,8 +2,8 @@ import React from "react";
 import style from "./styles/ToDo.module.css";
 import { BsPatchCheckFill } from "react-icons/bs";
 import { FiDelete } from "react-icons/fi";
-import { useDispatch, useStore } from "@/store/StoreProvider";
-import { types } from "@/store/StoreReducer";
+import { useDispatch, useStore } from "../store/StoreProvider";
+import { types } from "../store/StoreReducer";
 
 export default function ToDo({ task }) {
   const dispatch = useDispatch();

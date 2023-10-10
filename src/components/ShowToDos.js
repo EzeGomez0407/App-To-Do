@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import ToDo from "./ToDo";
-import { useDispatch, useStore } from "@/store/StoreProvider";
+import { useDispatch, useStore } from "../store/StoreProvider";
 import style from "./styles/ShowToDos.module.css";
 import ToDoLimit from "./ToDoLimit";
-import { useLocalStorage } from "@/custom_hooks/useLocalStorage";
-import { types } from "@/store/StoreReducer";
+import { useLocalStorage } from "../custom_hooks/useLocalStorage";
+import { types } from "../store/StoreReducer";
 
 export default function ShowToDos() {
   const state = useStore();

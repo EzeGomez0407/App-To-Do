@@ -1,0 +1,9 @@
+.containLayout {
+  min-height: 100vh;
+}
+
+@media (min-width: 900px) {
+  .containLayout {
+    margin: 0 auto;
+  }
+}

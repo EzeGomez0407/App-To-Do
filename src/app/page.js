@@ -1,17 +1,17 @@
-import { useUser } from "@auth0/nextjs-auth0/client";
+"use client";
+
+import { useSession } from "next-auth/react";
 import { FcTodoList } from "react-icons/fc";
 
-import Layout from "../components/Layout";
-import HomeLogin from "@/components/HomeLogin";
-import HomeWithoutLogin from "@/components/HomeWithoutLogin";
-import Loading from "@/components/Loading";
+import HomeLogin from "../components/HomeLogin";
+import HomeWithoutLogin from "../components/HomeWithoutLogin";
+import Loading from "../components/Loading";
 
 export default function Home() {
-  const { isLoading, user } = useUser();
-
+  const { data: session, status } = useSession();
   return (
-    <Layout>
-      {isLoading ? (
+    <>
+      {status === "loading" ? (
         <main className="mainLoading">
           <span className="simbolToDoLoading">
             <FcTodoList className="iconTodoLoading" />
@@ -19,11 +19,11 @@ export default function Home() {
           </span>
           <Loading />
         </main>
-      ) : !user ? (
+      ) : !session?.user ? (
         <HomeWithoutLogin />
       ) : (
         <HomeLogin />
       )}
-    </Layout>
+    </>
   );
 }

@@ -1,9 +1,10 @@
+"use client";
+
 import React from "react";
-import Link from "next/link";
-import { FiLogIn } from "react-icons/fi";
 
 import styles from "./styles/HomeWithoutLogin.module.css";
-import { DemoAddToDo, DemoAddToDoLimit } from "@/components/DemosComponents";
+import { DemoAddToDo, DemoAddToDoLimit } from "./DemosComponents";
+import { signIn } from "next-auth/react";
 
 export default function HomeWithoutLogin() {
   return (
@@ -22,10 +23,9 @@ export default function HomeWithoutLogin() {
           <DemoAddToDoLimit />
         </article>
       </section>
-      <Link href="/api/auth/login" className={styles.linkLogin}>
-        <span className={styles.spanBtnLogin}>Iniciar Sesión</span>
-        <FiLogIn />
-      </Link>
+      <button onClick={() => signIn()} className={styles.linkLogin}>
+        Iniciar session
+      </button>
     </main>
   );
 }

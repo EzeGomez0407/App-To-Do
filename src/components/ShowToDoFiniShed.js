@@ -1,4 +1,4 @@
-import { useStore } from "@/store/StoreProvider";
+import { useStore } from "../store/StoreProvider";
 import React from "react";
 
 import style from "./styles/ToDoFinished.module.css";

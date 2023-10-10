@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import style from "./styles/ModalAddTask.module.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useDispatch } from "@/store/StoreProvider";
-import { types } from "@/store/StoreReducer";
+import { useDispatch } from "../store/StoreProvider";
+import { types } from "../store/StoreReducer";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ModalAddTask({ setHideOrShow }) {

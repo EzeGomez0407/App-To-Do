@@ -1,10 +1,12 @@
+// COMPONENTE DONDE SE MUESTRA LA INFO DE LA TAREA
+
 import React, { useState, useEffect } from "react";
 import { BsPatchCheckFill } from "react-icons/bs";
-import { useDispatch } from "@/store/StoreProvider";
+import { useDispatch } from "../store/StoreProvider";
 import { FiDelete } from "react-icons/fi";
 
 import style from "./styles/ToDo.module.css";
-import { types } from "@/store/StoreReducer";
+import { types } from "../store/StoreReducer";
 import { taskTimeControl } from "../controllers/taskTimeControl";
 import TimeNotified from "./ModalTimeNotice";
 
@@ -14,6 +16,7 @@ export default function ToDoLimit({ task }) {
   const [timeShow, setTimeShow] = useState(timeLimit);
   const [timeNotice, setTimeNotice] = useState(false);
   const [tasksFinisheds, setTaskFinished] = useState(false);
+  const [interval, setInterval] = useState();
 
   const handlerShowNotified = () => {
     setTimeNotice(false);
@@ -31,20 +34,21 @@ export default function ToDoLimit({ task }) {
   };
 
   useEffect(() => {
-    const idInterval = taskTimeControl(
-      timeShow,
-      setTimeShow,
-      setTaskFinished,
-      setTimeNotice
+    setInterval(
+      taskTimeControl(timeShow, setTimeShow, setTaskFinished, setTimeNotice)
     );
-    if (tasksFinisheds) {
-      dispatch({ type: types.FINISHED_TASK, payload: task });
-      clearInterval(idInterval);
-    }
+
     return () => {
-      clearInterval(idInterval);
+      clearInterval(interval);
       setTimeNotice(false);
     };
+  }, [timeNotice, timeShow]);
+
+  useEffect(() => {
+    if (tasksFinisheds) {
+      dispatch({ type: types.FINISHED_TASK, payload: task });
+      clearInterval(interval);
+    }
   }, [tasksFinisheds]);
 
   return (
