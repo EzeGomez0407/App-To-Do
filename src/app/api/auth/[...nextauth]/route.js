@@ -15,7 +15,7 @@ export const authOptions = {
       async authorize(credentials, req) {
         console.log("URL BASE************ : ", process.env.NEXT_PUBLIC);
         const { error, user } = await (
-          await fetch(`${process.env.NEXT_PUBLIC}/api/login`, {
+          await fetch(process.env.NEXT_PUBLIC + "/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
