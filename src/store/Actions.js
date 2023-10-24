@@ -11,7 +11,6 @@ const addTaskAction = (task) => {
   );
 
   if (!propsCheckResult) return propsCheckResult;
-  console.log(task);
   dispatch({ type: types.ADD_TASK, payload: task });
 };
 

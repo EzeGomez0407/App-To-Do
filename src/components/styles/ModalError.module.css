@@ -1,0 +1,29 @@
+.mainModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #1111119c;
+  backdrop-filter: blur(2px);
+}
+.modalContain {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 50px 30px;
+  border-radius: 7px;
+  background: #e0e0e0;
+  box-shadow: 15px 15px 30px #303030;
+}
+.msgError {
+  text-align: center;
+  color: #444;
+}

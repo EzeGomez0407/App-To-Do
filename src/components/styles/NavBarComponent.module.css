@@ -63,6 +63,17 @@
   margin-bottom: 2px;
   font-size: 26px;
 }
+.containUserNameAndImage {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.userImage {
+  width: 32px;
+  height: auto;
+  transform: translateY(-2px);
+}
 
 @media (min-width: 900px) {
   .containNav {

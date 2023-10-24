@@ -7,21 +7,14 @@ import { CiMenuKebab } from "react-icons/ci";
 import { FcTodoList } from "react-icons/fc";
 import { handleScrollforStyleNavBar } from "../controllers/stylesChanges";
 import style from "./styles/NavBarComponent.module.css";
-import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const { data: userSession } = useSession();
   const [showSlideMenu, setShowSlideMenu] = useState(false);
   const [displayWidth, setDisplayWidth] = useState(null);
-  const route = useRouter();
-
   const showOrHideSlideMenuOnClick = () => {
     !showSlideMenu ? setShowSlideMenu(true) : setShowSlideMenu(false);
   };
-
-  useEffect(() => {
-    userSession?.user && route.push("/");
-  }, [userSession]);
 
   useEffect(() => {
     const navBar = document.getElementById("navBar");
@@ -69,6 +62,18 @@ export default function NavBar() {
         <FcTodoList className={style.iconTodo} />
         ToDo
       </span>
+      {userSession?.user && (
+        <span className={style.containUserNameAndImage}>
+          {userSession?.user.name}
+          <img
+            className={style.userImage}
+            src={
+              userSession?.user.image ||
+              "https://www.pngkit.com/png/full/281-2812821_user-account-management-logo-user-icon-png.png"
+            }
+          />
+        </span>
+      )}
     </nav>
   );
 }

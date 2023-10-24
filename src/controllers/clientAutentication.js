@@ -4,8 +4,6 @@ export const userRegister = async ({ username, email, password }) => {
     email_ok: email.length < 10,
     password_ok: password.length < 4,
   };
-  console.log({ username, email, password });
-  console.log(fieldsOK);
 
   if (fieldsOK.username_ok && fieldsOK.email_ok && fieldsOK.password_ok) {
     return {
@@ -56,7 +54,12 @@ export const userRegister = async ({ username, email, password }) => {
       await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          provider: "credentials",
+        }),
       })
     ).json();
 
@@ -96,21 +99,11 @@ export const userLogin = async ({ email, password }) => {
   } else if (!validateEmailAddress(email))
     return { error: ["ingresa un email valido"] };
 
-  const { error, user } = await (
-    await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    })
-  ).json();
-
   return {
-    error: error == null ? [] : [error],
-    user,
+    error: [],
+    user: { email, password },
   };
 };
-
-/* NO TERMINA DE INICIAR SESION, NO REDIRECCIONA AL HOME PARA COMENZAR A ANOTAR LAS TAREAS */
 
 function validateEmailAddress(email) {
   const patron = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;

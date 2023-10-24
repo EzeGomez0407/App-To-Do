@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./styles/TimeNotice.module.css";
 import { useDispatch } from "../store/StoreProvider";
 import { types } from "../store/StoreReducer";
 
 export default function TimeNotified({ task, handlerShow }) {
   const dispatch = useDispatch();
+  const [soundAlert, setSoundAlert] = useState(
+    new Audio("/alert-notified.mp3")
+  );
 
   const handlerFinshiedTask = () => {
     dispatch({ type: types.FINISHED_TASK, payload: task });
   };
 
   useEffect(() => {
-    const soundAlert = new Audio("/alert-notified.mp3");
     soundAlert.play();
 
     return () => {

@@ -7,7 +7,6 @@ function taskTimeControl(
   let time = taskEndTime;
 
   return setInterval(() => {
-    console.log(time.seconds);
     if (
       time.seconds === 0 &&
       time.minutesLimit === 0 &&

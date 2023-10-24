@@ -1,7 +1,13 @@
 import connectionDB from "../connectionDB";
 import bcrypt from "bcrypt";
 
-export const userRegister = async ({ username, email, password }) => {
+export const userRegister = async ({
+  username,
+  email,
+  image,
+  password,
+  provider,
+}) => {
   try {
     const db = await connectionDB();
 
@@ -11,17 +17,28 @@ export const userRegister = async ({ username, email, password }) => {
     );
 
     if (userExist.length) {
-      return { error: "este email ya ha sido registrado" };
+      const userAlreadyRegisteredError = new Error(
+        "este email ya ha sido registrado"
+      );
+      throw userAlreadyRegisteredError;
     }
 
     const [uuidResult] = await db.query("SELECT UUID() uuid;");
     const [{ uuid: userID }] = uuidResult;
 
-    await db.query(
-      `INSERT INTO user (id, username, email, password)
-     VALUES ("${userID}",?,?,?);`,
-      [username, email, password]
-    );
+    if (provider === "google") {
+      await db.query(
+        `INSERT INTO user (id, username, email, image, providers_account)
+       VALUES ("${userID}",?,?,?,?);`,
+        [username, email, image, JSON.stringify([provider])]
+      );
+    } else {
+      await db.query(
+        `INSERT INTO user (id, username, email, password, providers_account)
+     VALUES ("${userID}",?,?,?,?);`,
+        [username, email, password, JSON.stringify([provider])]
+      );
+    }
 
     const [users] = await db.query(
       `SELECT * FROM user
@@ -35,50 +52,55 @@ export const userRegister = async ({ username, email, password }) => {
       // user: userExist,
     };
   } catch (error) {
-    console.log(error);
-    return { error };
+    return {
+      error: error.message,
+      user: {},
+      // user: userExist,
+    };
   }
 };
 
 export const userLogin = async ({ email, password }) => {
   try {
     const db = await connectionDB();
-    const [users] = await db.query(
-      `SELECT id,username,email,password FROM user
+    const [user] = await db.query(
+      `SELECT id,username,email,image,password, providers_account FROM user
     WHERE email = (?);`,
       [email]
     );
 
-    if (!users.length) {
-      return {
-        error:
-          "el usuario no esta registrado o algunos de los campos son incorrectos",
-        logged: "unsuccessful",
-        user: {},
-      };
+    if (!user.length) {
+      const userNotRegisteredError = new Error("usuario no registrado");
+      throw userNotRegisteredError;
     }
 
-    const matchPassword = await bcrypt.compare(password, users[0].password);
+    if (!user[0].providers_account.includes("credentials")) {
+      const passwordMissingError = new Error("password missing");
+      throw passwordMissingError;
+    }
+
+    const matchPassword = await bcrypt.compare(password, user[0].password);
 
     if (matchPassword) {
       return {
         error: null,
         logged: "successfully",
         user: {
-          id: users[0].id,
-          username: users[0].username,
-          email: users[0].email,
+          id: user[0].id,
+          username: user[0].username,
+          email: user[0].email,
+          image: user[0].image,
         },
       };
     } else {
-      return {
-        error: "la contraseña es incorrecta",
-        logged: "unsuccessful",
-        user: {},
-      };
+      const badPasswordError = new Error("contraseña incorrecta");
+      throw badPasswordError;
     }
   } catch (error) {
-    console.log(error);
-    return error;
+    return {
+      error: error.message,
+      logged: "unsuccessful",
+      user: {},
+    };
   }
 };
