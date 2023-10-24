@@ -26,6 +26,7 @@ export const authOptions = {
         ).json();
 
         if (error) {
+          console.log(error);
           throw new Error(error);
         }
         return {

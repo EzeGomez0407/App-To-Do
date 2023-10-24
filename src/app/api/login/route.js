@@ -9,6 +9,7 @@ export async function POST(request) {
 
     return NextResponse.json(userLoggedIn);
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ error });
   }
 }
