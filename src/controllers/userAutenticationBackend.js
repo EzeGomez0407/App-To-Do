@@ -52,6 +52,7 @@ export const userRegister = async ({
       // user: userExist,
     };
   } catch (error) {
+    console.log("Error registering: ", error);
     return {
       error: error.message,
       user: {},
@@ -97,6 +98,7 @@ export const userLogin = async ({ email, password }) => {
       throw badPasswordError;
     }
   } catch (error) {
+    console.log("Error logging in: ", error);
     return {
       error: error.message,
       logged: "unsuccessful",

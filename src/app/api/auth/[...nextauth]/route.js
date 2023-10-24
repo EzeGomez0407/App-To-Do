@@ -13,7 +13,6 @@ export const authOptions = {
     Credentials({
       name: "credentials",
       async authorize(credentials, req) {
-        console.log("URL BASE************ : ", process.env.NEXT_PUBLIC);
         const { error, user } = await (
           await fetch(process.env.NEXT_PUBLIC + "/api/login", {
             method: "POST",
@@ -26,7 +25,6 @@ export const authOptions = {
         ).json();
 
         if (error) {
-          console.log(error);
           throw new Error(error);
         }
         return {
