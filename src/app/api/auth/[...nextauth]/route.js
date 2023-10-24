@@ -43,7 +43,7 @@ export const authOptions = {
       if (email) {
         if (account.provider === "google") {
           const userExist = await (
-            await fetch("http://localhost:3000/api/user", {
+            await fetch(`${process.env.NEXT_PUBLIC}/api/user`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ email }),
@@ -52,7 +52,7 @@ export const authOptions = {
 
           if (!userExist.length) {
             const userExist = await (
-              await fetch("http://localhost:3000/api/register", {
+              await fetch(`${process.env.NEXT_PUBLIC}/api/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
