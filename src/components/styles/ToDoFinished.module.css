@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 95%;
+  width: 97%;
   border-radius: 2px;
   outline: 2px solid #f42;
   background-color: #d87;
@@ -21,8 +21,13 @@
 }
 
 .nameTask {
-  text-decoration: line-through #f42a 3px;
+  text-decoration: line-through #f42a 2px;
   margin-bottom: 5px;
+}
+
+.description {
+  font-size: 11px;
+  font-weight: lighter;
 }
 
 .btnShowDescriptionTask {
@@ -40,6 +45,6 @@
 }
 @media (min-width: 900px) {
   .sectionTask {
-    width: 40%;
+    width: 50%;
   }
 }

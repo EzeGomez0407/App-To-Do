@@ -100,7 +100,7 @@ export default function ModalAddTask({ setHideOrShow }) {
           <AiOutlineCloseCircle />
         </button>
         <form className={style.formAddTask} onChange={handlerChangeAddTask}>
-          <label className={style.labelFormAddTask}>
+          <label className={style.labelNameTask}>
             <p>Nombre de la tarea</p>
             <input
               type="text"
@@ -110,14 +110,14 @@ export default function ModalAddTask({ setHideOrShow }) {
               autoComplete="off"
             />
           </label>
-          <label className={style.labelFormAddTask}>
+          <label className={style.labelDescriptionTask}>
             <p>Descricion</p>
             <textarea
               className={style.inputDescriptionTask}
               name="description"
             />
           </label>
-          <label className={style.labelFormAddTask}>
+          <div className={style.divContainLimitTaskField}>
             <div className={style.divTitleAndClickTimeLimit}>
               <p>Limitar Tiempo</p>
               <button
@@ -156,11 +156,11 @@ export default function ModalAddTask({ setHideOrShow }) {
                 />
               </label>
               <span className={style.infoTimeLimit}>
-                Aqui puedes setear cuantas horas o minutos le dedicaras a tu
-                tarea.
+                Ajusta cuántas horas o minutos le dedicaras a tu tarea.
               </span>
             </div>
-          </label>
+          </div>
+
           <p className={style.pError} id="p-error-empty-name">
             El campo nombre es obligatorio
           </p>

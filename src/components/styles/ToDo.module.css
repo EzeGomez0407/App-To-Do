@@ -1,37 +1,26 @@
 .articleTask {
+  position: relative;
   width: 95%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px;
+  border-bottom: 0.5px solid #777777;
+  font-family: "Open Sans", sans-serif;
 }
 
 .divContainName {
-  width: 100%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border: 2px solid #777777;
+  padding: 5px 10px;
   border-radius: 2px;
 }
-
-.spanTime {
-  margin-right: 20px;
-}
-
-.divContainDescription {
-  width: 97%;
-  margin: 0 6px;
-  padding: 10px;
-  border-left: 1px dotted #939393;
-  border-right: 1px dotted #939393;
-  border-bottom: 1px dotted #939393;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-
 .divContainButtons {
+  position: absolute;
+  right: 10px;
+  top: 3px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -54,12 +43,24 @@
   font-size: 23px;
   margin: 0 5px;
   color: #e84a4a;
-  transform: translateY(1.4px);
+  /* transform: translateY(1.4px); */
   cursor: pointer;
+}
+.spanTime {
+  margin-right: 20px;
+}
+
+.divContainDescription {
+  width: 70%;
+  margin: 0 6px;
+  padding: 0px 10px;
 }
 .description {
   overflow: auto;
+  font-size: 11px;
+  color: #eee;
 }
+
 @media (min-width: 900px) {
   .articleTask {
     width: 50%;
