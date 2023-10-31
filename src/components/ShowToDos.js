@@ -5,30 +5,32 @@ import style from "./styles/ShowToDos.module.css";
 import ToDoLimit from "./ToDoLimit";
 import { useLocalStorage } from "../custom_hooks/useLocalStorage";
 import { types } from "../store/StoreReducer";
+import { useSession } from "next-auth/react";
 
 export default function ShowToDos() {
   const state = useStore();
   const dispatch = useDispatch();
+  const { data: session, status } = useSession();
   const { tasksArray } = state;
-  const [taskStorage, setTaskStorage] = useLocalStorage(
-    "taskArray",
+  const [taskLocalStorage, setTaskLocalStorage] = useLocalStorage(
+    session?.user.email,
     tasksArray
   );
 
   useEffect(() => {
-    dispatch({ type: types.ADD_LIST_TASK, payload: taskStorage });
+    dispatch({ type: types.ADD_LIST_TASK, payload: taskLocalStorage });
   }, []);
 
   useEffect(() => {
-    setTaskStorage(tasksArray);
+    setTaskLocalStorage(tasksArray);
   }, [tasksArray]);
 
   return (
     <section className={style.sectionShowToDos}>
-      {!taskStorage[0] ? (
+      {!taskLocalStorage[0] ? (
         <span className={style.emptyTaskArray}>No hay tareas pendientes</span>
       ) : (
-        taskStorage.map((task) =>
+        taskLocalStorage.map((task) =>
           task.timeLimit !== null ? (
             <ToDoLimit key={task.id} id={task.id} task={task} />
           ) : (
